@@ -1,25 +1,30 @@
 package database.repository;
 
-import com.google.gson.JsonObject;
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Key;
 
 import java.util.List;
 
 /**
  * Created by david on 10/27/2014.
  */
-public abstract class MongoRepository {
+public abstract class MongoRepository<T> {
 
     private IDatabaseAdapter dbAdapter ;
+    private Datastore dataStore;
 
-    public IDatabaseAdapter getDbAdapter() {
+    private IDatabaseAdapter getDbAdapter() {
         if(dbAdapter==null)
             dbAdapter= MongoDBAdapter.getMongoDBAdapter();
         return dbAdapter;
     }
 
-    abstract JsonObject get(int id);
-    abstract List<JsonObject> getAll();
-    abstract JsonObject insert(JsonObject obj);
-    abstract JsonObject update(JsonObject obj);
+    protected Datastore getDataStore(){
+        return getDbAdapter().getDataStore();
+    }
+    abstract T get(int id);
+    abstract List<T> getAll();
+    abstract Key insert(T obj);
+    abstract T update(T obj);
     abstract boolean delete(int id);
 }

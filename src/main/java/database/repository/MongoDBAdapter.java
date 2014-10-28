@@ -1,10 +1,9 @@
 package database.repository;
 
-import system.StaticString;
 import com.mongodb.MongoClient;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
-import model.*;
+import system.StaticString;
 /**
  * Created by david on 10/24/2014.
  */
@@ -29,7 +28,6 @@ public class MongoDBAdapter implements IDatabaseAdapter {
 
     @Override
     public boolean connect() {
-
         Boolean result  = (this.getDataStore()!= null);
         return result;
     }
@@ -39,11 +37,41 @@ public class MongoDBAdapter implements IDatabaseAdapter {
         return false;
     }
 
+    public Morphia getMorphia() {
+        if(morphia==null)
+            initializeMorphia();
+        return morphia;
+    }
+
+    public MongoClient getMongoClient() {
+        if(mongoClient==null)
+            initializeMongoClient();
+        return mongoClient;
+    }
+
+    public String getDatabase() {
+        if(database==null)
+            initializeSettings();
+        return database;
+    }
+
     @Override
     public Datastore getDataStore() {
         if(dataStore==null)
             initializeDataStore();
         return dataStore;
+    }
+
+    private String getServer() {
+        if(server==null)
+            initializeSettings();
+        return server;
+    }
+
+    private int getPort() {
+        if(port==Integer.parseInt(StaticString.getString("magicNumberError")))
+            initializeSettings();
+        return port;
     }
 
     private void initializeMongoClient() {
@@ -74,39 +102,9 @@ public class MongoDBAdapter implements IDatabaseAdapter {
         Morphia morphia = getMorphia();
         if(morphia==null)
             initializeMorphia();
-        morphia.map(Rose.class);
-        morphia.map(Message.class);
-        morphia.map(DatingSiteRepository.class);
-        morphia.map(Credential.class);
+        morphia.mapPackage("model");
     }
 
-    private Morphia getMorphia() {
-        if(morphia==null)
-            initializeMorphia();
-        return morphia;
-    }
 
-    private MongoClient getMongoClient() {
-        if(mongoClient==null)
-            initializeMongoClient();
-        return mongoClient;
-    }
 
-    private String getServer() {
-        if(server==null)
-            initializeSettings();
-        return server;
-    }
-
-    private String getDatabase() {
-        if(database==null)
-            initializeSettings();
-        return database;
-    }
-
-    private int getPort() {
-        if(port==Integer.parseInt(StaticString.getString("magicNumberError")))
-            initializeSettings();
-        return port;
-    }
 }

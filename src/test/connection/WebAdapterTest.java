@@ -1,8 +1,5 @@
 package connection;
 
-import database.repository.CredentialRepository;
-import database.repository.DatingSiteRepository;
-import enumurator.DatingSiteEnum;
 import groovy.util.GroovyTestCase;
 import model.Credential;
 import model.DatingSite;
@@ -16,10 +13,8 @@ public class WebAdapterTest extends GroovyTestCase {
 
     @Before
     public void setUp() throws Exception {
-
-        Credential credential = new CredentialRepository().getCredential(DatingSiteEnum.OkCupid);
-        DatingSite datingSite = new DatingSiteRepository().getDatingSite(DatingSiteEnum.OkCupid);
-        credential.setDatingSite(DatingSiteEnum.OkCupid);
+        Credential credential = null;
+        DatingSite datingSite = null;
         webAdapter = new WebAdapter(credential,datingSite);
     }
 
