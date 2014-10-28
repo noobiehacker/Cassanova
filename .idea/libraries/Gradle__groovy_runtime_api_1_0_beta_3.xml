@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: groovy-runtime-api-1.0-beta-3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.mojo.groovy.runtime/groovy-runtime-api/1.0-beta-3/f1e4607bfc4734b82ef3b748d148dadb8eb8cc7a/groovy-runtime-api-1.0-beta-3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.mojo.groovy.runtime/groovy-runtime-api/1.0-beta-3/7d07437ac6e5264c777c2cd44f66b1355390479e/groovy-runtime-api-1.0-beta-3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

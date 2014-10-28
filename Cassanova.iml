@@ -9,13 +9,14 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="TEST" name="Gradle: junit-4.11" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: hamcrest-core-1.3" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: junit-4.11" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Gradle: hamcrest-core-1.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gson-2.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: htmlunit-2.15" level="project" />
     <orderEntry type="library" exported="" name="Gradle: xalan-2.7.1" level="project" />
@@ -38,7 +39,22 @@
     <orderEntry type="library" exported="" name="Gradle: jetty-util-8.1.15.v20140411" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jetty-io-8.1.15.v20140411" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jetty-http-8.1.15.v20140411" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: unresolved_dependency___org_mongodb_morphia_morphia____" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: morphia-0.108" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: mongo-java-driver-2.12.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: groovy-runtime-default-1.0-beta-3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: slf4j-api-1.4.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: groovy-runtime-1.1-1.0-beta-3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: groovy-feature-support-1.0-beta-3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: groovy-runtime-support-1.0-beta-3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: groovy-all-minimal-1.1-rc-3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: ant-1.7.0-1.0-beta-3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: qdox-1.6.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: jline-0.9.91" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: groovy-feature-api-1.0-beta-3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: groovy-runtime-api-1.0-beta-3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: groovy-mojo-common-1.0-beta-3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: ant-launcher-1.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: junit-3.8.1" level="project" />
   </component>
 </module>
 

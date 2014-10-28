@@ -1,16 +1,26 @@
 package model;
+
+import enumurator.MessageTypeEnum;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+
 import java.util.Date;
 
 /**
  * Created by david on 10/24/2014.
  */
+@Entity
 public class Message {
-
+    @Id
+    private ObjectId id;
     private String subject;
     private String cassanovaName;
     private String roseName;
     private String message;
     private Date createDateTime;
+    private MessageTypeEnum messageType;
+    private Boolean replied;
 
     public String getSubject() {
         return subject;

@@ -9,6 +9,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import model.Credential;
 import model.DatingSite;
 
+
 public class WebAdapter implements IWebAdapter {
 
     private WebClient webClient;
@@ -16,6 +17,14 @@ public class WebAdapter implements IWebAdapter {
     private DatingSite datingSite;
     private Boolean isConnected = false;
     private HtmlPage currentPage;
+
+    public WebAdapter(Credential credential, DatingSite datingSite)
+    {
+        this.credential=credential;
+        this.datingSite = datingSite;
+        this.webClient = new WebClient(BrowserVersion.CHROME);
+        initializeWebClientOptions();
+    }
 
     @Override
     public boolean connect() {
@@ -26,13 +35,6 @@ public class WebAdapter implements IWebAdapter {
             System.out.println(e.toString());
         }
         return result;
-    }
-
-    public WebAdapter(Credential credential)
-    {
-        this.credential=credential;
-        this.webClient = new WebClient(BrowserVersion.CHROME);
-        this.setWebClientOptions(this.webClient);
     }
 
     @Override
@@ -83,49 +85,52 @@ public class WebAdapter implements IWebAdapter {
 
     }
 
-    private void setWebClientOptions(WebClient webClient)
+    private void initializeWebClientOptions()
     {
-        webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-        webClient.getOptions().setUseInsecureSSL(true);
-        webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
-        webClient.getOptions().setThrowExceptionOnScriptError(false);
-        webClient.waitForBackgroundJavaScript(50000);
-        webClient.waitForBackgroundJavaScriptStartingBefore(10000);
+        if(getWebClient()!=null)
+        {
+            getWebClient().setAjaxController(new NicelyResynchronizingAjaxController());
+            getWebClient().getOptions().setUseInsecureSSL(true);
+            getWebClient().getOptions().setThrowExceptionOnFailingStatusCode(false);
+            getWebClient().getOptions().setThrowExceptionOnScriptError(false);
+            getWebClient().waitForBackgroundJavaScript(50000);
+            getWebClient().waitForBackgroundJavaScriptStartingBefore(10000);
+        }
     }
 
-    public WebClient getWebClient() {
+    private WebClient getWebClient() {
         return webClient;
     }
 
-    public void setWebClient(WebClient webClient) {
+    private void setWebClient(WebClient webClient) {
         this.webClient = webClient;
     }
 
-    public Credential getCredential() {
+    private Credential getCredential() {
         return credential;
     }
 
-    public void setCredential(Credential credential) {
+    private void setCredential(Credential credential) {
         this.credential = credential;
     }
 
-    public DatingSite getDatingSite() {
+    private DatingSite getDatingSite() {
         return datingSite;
     }
 
-    public void setDatingSite(DatingSite datingSite) {
+    private void setDatingSite(DatingSite datingSite) {
         this.datingSite = datingSite;
     }
 
-    public Boolean getIsConnected() {
+    private Boolean getIsConnected() {
         return isConnected;
     }
 
-    public void setIsConnected(Boolean isConnected) {
+    private void setIsConnected(Boolean isConnected) {
         this.isConnected = isConnected;
     }
 
-    public void setCurrentPage(HtmlPage currentPage) {
+    private void setCurrentPage(HtmlPage currentPage) {
         this.currentPage = currentPage;
     }
 }

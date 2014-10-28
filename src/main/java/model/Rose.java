@@ -2,14 +2,20 @@ package model;
 
 import enumurator.CityEnum;
 import enumurator.DatingSiteEnum;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 import java.awt.*;
 
 /**
  * Created by david on 10/24/2014.
  */
+@Entity
 public class Rose {
 
+    @Id
+    private ObjectId id;
     private int age;
     private int score;
     private String userName;
