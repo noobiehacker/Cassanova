@@ -9,7 +9,6 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import model.Credential;
 import model.DatingSite;
 
-
 public class WebAdapter implements IWebAdapter {
 
     private WebClient webClient;

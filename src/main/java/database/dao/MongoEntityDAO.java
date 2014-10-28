@@ -1,7 +1,7 @@
-package database.repository;
+package database.dao;
 
 import com.mongodb.MongoClient;
-import org.mongodb.morphia.Datastore;
+import database.adapter.MongoDBAdapter;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.dao.BasicDAO;
 
@@ -12,21 +12,11 @@ import java.util.List;
  */
 public abstract class MongoEntityDAO<T ,K > extends BasicDAO  {
 
-    private Datastore dataStore;
-
-
     public MongoEntityDAO(MongoClient mongo, Morphia morphia) {
         super(mongo, morphia, MongoDBAdapter.getMongoDBAdapter().getDatabase());
-        setDataStore(MongoDBAdapter.getMongoDBAdapter().getDataStore());
     }
 
-    public Datastore getDataStore() {
-        return dataStore;
+    public List<T> getAll() {
+        return getDatastore().find(getEntityClass()).asList();
     }
-
-    private void setDataStore(Datastore dataStore) {
-        this.dataStore = dataStore;
-    }
-
-    abstract List<T> getAll();
 }

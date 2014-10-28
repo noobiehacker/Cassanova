@@ -1,4 +1,4 @@
-package database.repository;
+package database.adapter;
 
 import com.mongodb.MongoClient;
 import org.mongodb.morphia.Datastore;
