@@ -13,4 +13,5 @@ dependencies {
     compile 'org.mongodb.morphia:morphia:0.108'
     compile 'com.google.code.gson:gson:2.3'
     compile 'net.sourceforge.htmlunit:htmlunit:2.15'
+    compile 'org.mongodb:mongo-java-driver:2.12.4'
 }

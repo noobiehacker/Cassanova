@@ -3,7 +3,8 @@ package database.adapter;
 import com.mongodb.MongoClient;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
-import system.StaticString;
+import cassanovaSystem.StaticString;
+
 /**
  * Created by david on 10/24/2014.
  */
@@ -15,26 +16,8 @@ public class MongoDBAdapter implements IDatabaseAdapter {
     private String server;
     private String database;
     private int port =Integer.parseInt(StaticString.getString("magicNumberError"));
-    private static MongoDBAdapter singleton_mongoDBAdapter;
 
-    private MongoDBAdapter(){
-    }
-
-    public static MongoDBAdapter getMongoDBAdapter(){
-        if(MongoDBAdapter.singleton_mongoDBAdapter==null)
-            MongoDBAdapter.singleton_mongoDBAdapter = new MongoDBAdapter();
-        return MongoDBAdapter.singleton_mongoDBAdapter;
-    }
-
-    @Override
-    public boolean connect() {
-        Boolean result  = (this.getDataStore()!= null);
-        return result;
-    }
-
-    @Override
-    public boolean disconnect() {
-        return false;
+    public MongoDBAdapter(){
     }
 
     public Morphia getMorphia() {
@@ -49,13 +32,12 @@ public class MongoDBAdapter implements IDatabaseAdapter {
         return mongoClient;
     }
 
-    public String getDatabase() {
+    private String getDatabase() {
         if(database==null)
             initializeSettings();
         return database;
     }
 
-    @Override
     public Datastore getDataStore() {
         if(dataStore==null)
             initializeDataStore();
@@ -102,9 +84,12 @@ public class MongoDBAdapter implements IDatabaseAdapter {
         Morphia morphia = getMorphia();
         if(morphia==null)
             initializeMorphia();
-        morphia.mapPackage("model");
+        mapModelPackage();
     }
 
+    private void mapModelPackage(){
+        getMorphia().mapPackage("model");
+    }
 
 
 }

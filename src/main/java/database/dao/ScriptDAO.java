@@ -13,4 +13,5 @@ public class ScriptDAO extends MongoEntityDAO<Script, ObjectId>
     public ScriptDAO(Morphia morphia, MongoClient mongo){
         super(mongo, morphia);
     }
+
 }
