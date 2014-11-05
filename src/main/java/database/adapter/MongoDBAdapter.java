@@ -51,6 +51,7 @@ public class MongoDBAdapter implements IDatabaseAdapter {
     }
 
     private int getPort() {
+        String testTemp=StaticString.getString("magicNumberError");
         if(port==Integer.parseInt(StaticString.getString("magicNumberError")))
             initializeSettings();
         return port;

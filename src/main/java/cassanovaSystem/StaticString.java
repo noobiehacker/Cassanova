@@ -12,7 +12,14 @@ public class StaticString {
     private Properties properties;
 
     public static String getString(String key){
-        return StaticString.getSingleTon_staticString().getProperties().getProperty(key);
+        String result;
+        try{
+            result = StaticString.getSingleTon_staticString().getProperties().getProperty(key);
+        }
+        catch(Exception e){
+            result =  "No Key Found";
+        }
+        return result;
     }
 
     private static StaticString getSingleTon_staticString() {
@@ -30,7 +37,7 @@ public class StaticString {
     private void initializeProperties(){
         try{
             properties = new Properties();
-            InputStream in = this.getClass().getResourceAsStream("c.properties");
+            InputStream in = this.getClass().getResourceAsStream("String.properties");
             properties.load(in);
         }
         catch(Exception e)
