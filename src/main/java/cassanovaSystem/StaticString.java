@@ -37,7 +37,7 @@ public class StaticString {
     private void initializeProperties(){
         try{
             properties = new Properties();
-            InputStream in = this.getClass().getResourceAsStream("String.properties");
+            InputStream in = this.getClass().getClassLoader().getResourceAsStream("String.properties");
             properties.load(in);
         }
         catch(Exception e)

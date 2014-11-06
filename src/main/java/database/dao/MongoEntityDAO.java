@@ -13,33 +13,16 @@ import java.util.List;
 /**
  * Created by david on 10/28/2014.
  */
-public abstract class MongoEntityDAO<T ,K > extends BasicDAO  {
+public interface MongoEntityDAO<T ,K >   {
 
-    public MongoEntityDAO(MongoClient mongo, Morphia morphia) {
-        super(mongo, morphia, StaticString.getString("testDB"));
-    }
+    public List<T> getAll();
 
-    public List<T> getAll() {
-        return getDatastore().find(getEntityClass()).asList();
-    }
+    public T get(K id);
 
-    public Object get(int id)
-    {
-        return this.get(id);
-    }
+    public Key insert(T obj);
 
-    public Key insert(T obj)
-    {
-        return this.save(obj);
-    }
+    public Key update(T obj);
 
-    public Key update(T obj)
-    {
-        return this.save(obj);
-    }
+    public Boolean delete(K id);
 
-    public WriteResult delete(int id)
-    {
-        return this.deleteById(id);
-    }
 }
