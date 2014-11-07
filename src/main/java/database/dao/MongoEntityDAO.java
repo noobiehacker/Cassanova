@@ -1,28 +1,40 @@
 package database.dao;
 
-import cassanovaSystem.StaticString;
 import com.mongodb.MongoClient;
 import com.mongodb.WriteResult;
-import database.adapter.MongoDBAdapter;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.*;
 import org.mongodb.morphia.dao.BasicDAO;
+import org.mongodb.morphia.query.QueryResults;
 
 import java.util.List;
 
 /**
  * Created by david on 10/28/2014.
  */
-public interface MongoEntityDAO<T ,K >   {
+public abstract class MongoEntityDAO<T ,K > extends BasicDAO<T,K> implements IDAO<T,K>{
 
-    public List<T> getAll();
+    public MongoEntityDAO(Morphia morphia, MongoClient mongo){
+        super(mongo, morphia ,"testdb");
+    }
 
-    public T get(K id);
+    public QueryResults<T> getAll(){
+        return super.find();
+    }
 
-    public Key insert(T obj);
+    public T get(K id){
+        return super.get(id);
+    }
 
-    public Key update(T obj);
+    public Key insert(T obj){
+        return super.save(obj);
+    }
 
-    public Boolean delete(K id);
+    public Key update(T obj){
+        return super.save(obj);
+    }
 
+    public WriteResult deleteById(K id){
+        return super.deleteById(id);
+    }
 }
