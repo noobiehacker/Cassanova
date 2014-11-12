@@ -10,7 +10,27 @@ import org.mongodb.morphia.annotations.Id;
 @Entity
 public class ScriptMessage {
 
+    public ScriptMessage(){
+    }
+
     @Id
     private ObjectId id;
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
     private String scriptMessage;
+
+    public String getScriptMessage() {
+        return scriptMessage;
+    }
+
+    public void setScriptMessage(String scriptMessage) {
+        this.scriptMessage = scriptMessage;
+    }
 }

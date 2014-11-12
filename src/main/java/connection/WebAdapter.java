@@ -53,12 +53,7 @@ public class WebAdapter implements IWebAdapter {
     @Override
     public HtmlPage getCurrentPage()
     {
-        HtmlPage pageObject = null;
-        if(isConnected && currentPage!= null)
-        {
-
-        }
-        return pageObject;
+        return currentPage;
     }
 
     @Override
@@ -76,12 +71,21 @@ public class WebAdapter implements IWebAdapter {
 
     @Override
     public void editForm(HtmlForm form, String text) {
-
+        form.setTextContent(text);
     }
 
     @Override
-    public void clickButton(HtmlButton button) {
+    public HtmlPage clickButton(HtmlButton button) {
 
+        HtmlPage page = null;
+
+        try{
+            page = button.click();
+        }
+        catch(Exception e){
+        }
+
+        return page;
     }
 
     private void initializeWebClientOptions()

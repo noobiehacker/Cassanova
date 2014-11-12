@@ -9,8 +9,8 @@ public interface IWebAdapter {
 
     public HtmlPage getCurrentPage();
     public HtmlPage clickLink(String link);
+    public HtmlPage clickButton(HtmlButton button);
     public void editForm(HtmlForm form, String text);
-    public void clickButton(HtmlButton button);
     public boolean disconnect();
     public boolean connect();
 }

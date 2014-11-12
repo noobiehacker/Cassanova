@@ -14,4 +14,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
     compile 'net.sourceforge.htmlunit:htmlunit:2.15'
     compile 'org.mongodb:mongo-java-driver:2.12.4'
+    compile 'org.jsoup:jsoup:1.8.1'
 }
