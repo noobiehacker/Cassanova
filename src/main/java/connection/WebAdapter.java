@@ -21,7 +21,7 @@ public class WebAdapter implements IWebAdapter {
     {
         this.credential=credential;
         this.datingSite = datingSite;
-        this.webClient = new WebClient(BrowserVersion.CHROME);
+        this.webClient = new WebClient(BrowserVersion.FIREFOX_24);
         initializeWebClientOptions();
     }
 
@@ -62,6 +62,8 @@ public class WebAdapter implements IWebAdapter {
         Boolean result = isConnected;
         try {
             currentPage = webClient.getPage(link);
+            String temp = currentPage.asText();
+            String xml =currentPage.asXml();
             isConnected = true;
         } catch(Exception e){
             System.out.println(e.toString());
@@ -96,8 +98,12 @@ public class WebAdapter implements IWebAdapter {
             getWebClient().getOptions().setUseInsecureSSL(true);
             getWebClient().getOptions().setThrowExceptionOnFailingStatusCode(false);
             getWebClient().getOptions().setThrowExceptionOnScriptError(false);
+            getWebClient().getOptions().setJavaScriptEnabled(true);
+            getWebClient().getOptions().setCssEnabled(true);
+            getWebClient().getCookieManager().setCookiesEnabled(true);
             getWebClient().waitForBackgroundJavaScript(50000);
             getWebClient().waitForBackgroundJavaScriptStartingBefore(10000);
+
         }
     }
 
